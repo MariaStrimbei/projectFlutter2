@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'StockItem.dart';
-import 'main.dart';
+import 'sql_helper.dart';
 
 class EditStockPage extends StatefulWidget {
   final StockItem stockItem;
@@ -108,17 +108,21 @@ class _EditStockPageState extends State<EditStockPage> {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       // Validate input and update stock item in the list
                       StockItem updatedItem = StockItem(
+                        id: widget.stockItem.id,
                         name: nameController.text,
                         category: selectedCategory,
                         quantity: int.parse(quantityController.text),
                         price: double.parse(priceController.text),
                         warehouse: selectedWarehouse,
                       );
-                      Navigator.pop(context,
-                          updatedItem); // Navigate back to the previous screen and pass the updated item
+
+                      await SQLHelper.updateItem(updatedItem);
+
+                      // Navigate back to the previous screen and pass the updated item
+                      Navigator.pop(context, updatedItem);
                     },
                     child: Text('Update Stock'),
                   ),

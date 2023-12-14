@@ -24,7 +24,6 @@ class DeleteStockPage extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Handle deletion
                 Navigator.pop(context, true);
               },
               child: Text('Delete'),
@@ -32,7 +31,6 @@ class DeleteStockPage extends StatelessWidget {
             SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
-                // Handle cancellation
                 Navigator.pop(context, false);
               },
               child: Text('Cancel'),

@@ -125,6 +125,7 @@ class _AddStockPageState extends State<AddStockPage> {
     }
   }
 
+//validate data and create the item
   StockItem? _validateAndCreateNewItem() {
     String name = nameController.text.trim();
     String category = selectedCategory;
